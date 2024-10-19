@@ -1,12 +1,10 @@
 'use client'
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 import AnimatedHamburgerButton from './AnimatedHamburgerButton'
-
-import { BsMoon } from 'react-icons/bs'
-import logo from '../assets/logo.svg'
+import { useTheme } from 'next-themes'
+import { BsMoon, BsSun } from 'react-icons/bs'
 
 const menuVariants = {
   open: {
@@ -70,20 +68,34 @@ const Header = () => {
   const drawerRef = useRef<HTMLUListElement>(null)
 
   const toggleMenu = () => setOpenDrawer((prev) => !prev)
+  const { theme, setTheme } = useTheme()
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
 
   return (
-    <header className="container fixed z-30 h-[70px] w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
-      <div className="flex h-full w-full max-w-7xl justify-between px-5">
+    <header className="dark:bb bb fixed z-30 h-[60px] w-full backdrop-blur-[10px]">
+      <div className="bl flex h-full w-full max-w-7xl items-center justify-between">
         {/* Logo Section */}
-        <div className="flex items-center">
-          <a href="/" className="w-16">
-            <Image
-              src={logo}
-              alt="Logo"
-              className="w-5 border-solid border-[#ffffff1a]"
-            />
+        <div className="flex items-center gap-2">
+          <a href="/" className="br p-[22px]">
+            <svg
+              width="20"
+              height="16"
+              viewBox="0 0 20 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M10 0L15 7.999H5L10 0Z" fill="#F43333"></path>
+              <path d="M5 7.99902L10 15.998H0L5 7.99902Z" fill="#F43333"></path>
+              <path
+                d="M15 7.99902L20 15.998H10L15 7.99902Z"
+                fill="#F43333"
+              ></path>
+            </svg>
           </a>
-          <a href="/" className="w-[162px] capitalize">
+          <a href="/" className="capitalize">
             riangle
           </a>
         </div>
@@ -99,7 +111,7 @@ const Header = () => {
             <motion.li
               key={item}
               variants={descitemVariants}
-              className="br bl p-6"
+              className="br bl p-4"
             >
               <a href="#" className="text-lg font-medium">
                 {item}
@@ -107,14 +119,14 @@ const Header = () => {
             </motion.li>
           ))}
           <motion.li variants={itemVariants} className="p-6">
-            <a>
-              <BsMoon />
-            </a>
+            <button onClick={toggleTheme} aria-label="Toggle theme">
+              {theme === 'dark' ? <BsSun /> : <BsMoon />}
+            </button>
           </motion.li>
         </motion.ul>
 
         {/* Animated Burger Button for Mobile */}
-        <div className="my-auto block sm:hidden">
+        <div className="my-auto block pr-2 sm:hidden">
           <AnimatedHamburgerButton active={openDrawer} toggle={toggleMenu} />
         </div>
       </div>
@@ -125,13 +137,13 @@ const Header = () => {
         initial="closed"
         animate={openDrawer ? 'open' : 'closed'}
         variants={menuVariants}
-        className="fixed right-0 top-[70px] h-[calc(100vh-70px)] w-full bg-black text-white sm:hidden"
+        className="dark:bg-darkBackground fixed right-0 top-[70px] h-[calc(100vh-70px)] w-full bg-white sm:hidden"
       >
         {['Work', 'About', 'Stories', 'Contact'].map((item) => (
           <motion.li
             key={item}
             variants={itemVariants}
-            className="w-full border-b border-white/10 py-6 text-center"
+            className="w-full border-b border-white/10 py-7 text-center"
           >
             <a href="#" className="block text-3xl font-semibold">
               {item}
@@ -143,7 +155,9 @@ const Header = () => {
           variants={itemVariants}
           className="flex w-full cursor-pointer items-center justify-center py-6 text-center"
         >
-          <BsMoon size={24} />
+          <button onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === 'dark' ? <BsSun /> : <BsMoon />}
+          </button>
         </motion.li>
       </motion.ul>
     </header>

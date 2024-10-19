@@ -20,6 +20,35 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a,
+button {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.em-style {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 1px;
+  transform: translate3d(0px, 0px, 0px) scaleY(0);
+  transform-origin: center top;
+  background: #ffffff1a;
+}
+
+.br {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bl {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bb {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -23,32 +23,33 @@
 }
 
 :root {
-  --lightBackground: '#ffffff';
-  --lightForeground: '#000000';
+  --lightBackground: #ffffff; /* Removed quotes */
+  --lightForeground: #000000; /* Removed quotes */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --darkBackground: '#151515';
-    --darkForeground: '#ededed';
+    --darkBackground: #151515; /* Removed quotes */
+    --darkForeground: #ededed; /* Removed quotes */
   }
+}
+
+.custom-cursor {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 body {
   @apply bg-lightBackground text-lightForeground;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 .dark body {
   @apply bg-darkBackground text-darkForeground;
 }
 
-/* #151515;
-#ededed; 
-
-#ffffff
-#000000
-*/
-
+/* Ensure borders adapt to dark mode */
 a,
 button {
   cursor: pointer;
@@ -56,139 +57,117 @@ button {
   text-decoration: none;
   transition: 0.3s;
 }
+
 footer {
   transition: 0.3s;
 }
 
-/* .em-style {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 1px;
-  transform: translate3d(0px, 0px, 0px) scaleY(0);
-  transform-origin: center top;
-  background: #ffffff1a;
-} */
-
-.br {
+/* Custom borders */
+/* .br {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-.br-none {
-  border-right: none;
-}
-
 .bl {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-.bl-none {
-  border-left: none;
-}
-
-.bb {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.bb-none {
-  border-bottom: none;
-}
-
 .bt {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-.bt-none {
-  border-top: none;
-}
+.bb {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+} */
 
 /* Dark mode border styles */
-.dark-br {
-  border-right: 1px solid darkgray;
+/* .dark .br {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark-br-none {
+.dark .bl {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .bt {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .bb {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+} */
+
+.light .br {
+  border-right: 1px solid rgba(0, 0, 0, 0.1); /* Light grey border for light mode */
+}
+.light .bl {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.light .bt {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.light .bb {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Borders */
+.dark .br {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark .bl {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark .bt {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark .bb {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.br-none {
   border-right: none;
 }
 
-.dark-bl {
-  border-left: 1px solid darkgray;
-}
-
-.dark-bl-none {
-  border-left: none;
-}
-
-.dark-bb {
-  border-bottom: 1px solid darkgray;
-}
-
-.dark-bb-none {
-  border-bottom: none;
-}
-
-.dark-bt {
-  border-top: 1px solid darkgray;
-}
-
-.dark-bt-none {
-  border-top: none;
-}
-
-/* Test */
-
-/* .br {
-  @apply border-r border-white/10;
-}
-
-.br-none {
-  @apply border-r-0;
-}
-
-.bl {
-  @apply border-l border-white/10;
-}
-
-.bl-none {
-  @apply border-l-0;
-}
-
-.bb {
-  @apply border-b border-white/10;
-}
-
-.bb-none {
-  @apply border-b-0;
-} */
-
-.bt {
-  @apply border-t border-white/10;
-}
-
-.bt-none {
-  @apply border-t-0;
-}
+/* Other borders... */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  .bb {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
 
   .bg-lightBackground {
     background-color: var(--lightBackground);
   }
+
   .text-lightForeground {
     color: var(--lightForeground);
   }
+
   .bg-darkBackground {
     background-color: var(--darkBackground);
   }
+
   .text-darkForeground {
     color: var(--darkForeground);
+  }
+  .light-br {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .light-bl {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .light-bt {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .light-bb {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .dark-br {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .dark-bl {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .dark-bt {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .dark-bb {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }

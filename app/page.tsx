@@ -1,11 +1,14 @@
 'use client'
 
-import CustomCursor from '@/components/CutomCursor'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import Loader from '@/components/Loader'
-import { AnimatePresence, motion, stagger, useAnimation } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { useAnimation } from 'framer-motion'
+
+import Loader from '@/components/Loader'
+import Header from '@/components/Header'
+import Heading from '@/components/Heading'
+import Stories from '@/components/Stories'
+import Footer from '@/components/Footer'
+import CustomCursor from '@/components/CutomCursor'
 
 export default function Home() {
   const [show, setShow] = useState(true)
@@ -14,35 +17,7 @@ export default function Home() {
       setShow(false)
     }, 2000)
   }, [])
-  const divVariants = {
-    hidden: {
-      y: -40,
-      border: '2px solid transparent'
-    },
-    visible: {
-      opacity: 1,
-      border: ['2px solid transparent', '2px solid white'],
 
-      transition: {
-        // duration: 1,
-        when: 'afterChildren',
-        staggerChildren: 0.2
-      }
-    }
-  }
-  const h1Variants = {
-    hidden: {
-      opacity: 0
-    },
-    visible: {
-      y: 40,
-      top: 0,
-      opacity: 1,
-      transition: {
-        duration: 1
-      }
-    }
-  }
   const controls = useAnimation() // Animation controls for sequence
   useEffect(() => {
     controls.start('complete')
@@ -79,11 +54,11 @@ export default function Home() {
           <div className="flex flex-col">
             <Header />
             {/* <CustomCursor /> */}
-            <main className="">
-              <h1 className="mt-20 text-center text-4xl">
-                Welcome to the App!
-              </h1>
+            <main className="mt-20">
+              <Heading />
+              <Stories />
             </main>
+
             <Footer />
           </div>
         </>

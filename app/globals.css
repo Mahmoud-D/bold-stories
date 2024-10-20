@@ -2,23 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Signeton';
+  src:
+    url('/fonts/Signeton.woff2') format('woff2'),
+    url('/fonts/Signeton.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Magnita';
+  src:
+    url('/fonts/Magnita.woff2') format('woff2'),
+    url('/fonts/Magnita.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --lightBackground: '#ffffff';
+  --lightForeground: '#000000';
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --darkBackground: '#151515';
+    --darkForeground: '#ededed';
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  @apply bg-lightBackground text-lightForeground;
   font-family: Arial, Helvetica, sans-serif;
 }
+.dark body {
+  @apply bg-darkBackground text-darkForeground;
+}
+
+/* #151515;
+#ededed; 
+
+#ffffff
+#000000
+*/
 
 a,
 button {
@@ -27,8 +56,11 @@ button {
   text-decoration: none;
   transition: 0.3s;
 }
+footer {
+  transition: 0.3s;
+}
 
-.em-style {
+/* .em-style {
   display: block;
   position: absolute;
   top: 0;
@@ -38,19 +70,125 @@ button {
   transform: translate3d(0px, 0px, 0px) scaleY(0);
   transform-origin: center top;
   background: #ffffff1a;
-}
+} */
 
 .br {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.br-none {
+  border-right: none;
+}
+
 .bl {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.bl-none {
+  border-left: none;
+}
+
 .bb {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.bb-none {
+  border-bottom: none;
+}
+
+.bt {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bt-none {
+  border-top: none;
+}
+
+/* Dark mode border styles */
+.dark-br {
+  border-right: 1px solid darkgray;
+}
+
+.dark-br-none {
+  border-right: none;
+}
+
+.dark-bl {
+  border-left: 1px solid darkgray;
+}
+
+.dark-bl-none {
+  border-left: none;
+}
+
+.dark-bb {
+  border-bottom: 1px solid darkgray;
+}
+
+.dark-bb-none {
+  border-bottom: none;
+}
+
+.dark-bt {
+  border-top: 1px solid darkgray;
+}
+
+.dark-bt-none {
+  border-top: none;
+}
+
+/* Test */
+
+/* .br {
+  @apply border-r border-white/10;
+}
+
+.br-none {
+  @apply border-r-0;
+}
+
+.bl {
+  @apply border-l border-white/10;
+}
+
+.bl-none {
+  @apply border-l-0;
+}
+
+.bb {
+  @apply border-b border-white/10;
+}
+
+.bb-none {
+  @apply border-b-0;
+} */
+
+.bt {
+  @apply border-t border-white/10;
+}
+
+.bt-none {
+  @apply border-t-0;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .bb {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bg-lightBackground {
+    background-color: var(--lightBackground);
+  }
+  .text-lightForeground {
+    color: var(--lightForeground);
+  }
+  .bg-darkBackground {
+    background-color: var(--darkBackground);
+  }
+  .text-darkForeground {
+    color: var(--darkForeground);
   }
 }

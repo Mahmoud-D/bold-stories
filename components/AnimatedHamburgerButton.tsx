@@ -21,21 +21,22 @@ const AnimatedHamburgerButton: React.FC<AnimatedHamburgerButtonProps> = ({
         initial={false}
         animate={active ? 'open' : 'closed'}
         onClick={toggle}
-        className="relative h-10 w-10 rounded-full bg-white/0 transition-colors"
+        className="relative w-10 h-10 transition-colors rounded-full bg-white/0"
       >
         <motion.span
           variants={VARIANTS.top}
-          className="bg-darkBackground absolute h-1 w-10 dark:bg-white"
+          className="absolute w-10 h-1 bg-black dark:bg-white"
           style={{ y: '-50%', left: '50%', x: '-50%', top: '35%' }}
         />
+
         <motion.span
           variants={VARIANTS.middle}
-          className="bg-darkBackground absolute h-1 w-10 dark:bg-white"
+          className="absolute w-10 h-1 bg-black dark:bg-white"
           style={{ left: '50%', x: '-50%', top: '50%', y: '-50%' }}
         />
         {/* <motion.span
           variants={VARIANTS.bottom}
-          className="absolute h-1 w-5 bg-white"
+          className="absolute w-5 h-1 bg-white"
           style={{ left: '50%', x: '-50%', top: '65%', y: '-50%' }}
         /> */}
       </motion.button>

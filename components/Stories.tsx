@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 import StoryCard from './StoryCard'
+import LoadMoreButton from './LoadMoreButton'
 
 interface Story {
   name: string
@@ -41,7 +42,6 @@ const Stories = () => {
     }
   ]
 
-  const [stories] = useState<Story[]>(staticData)
   const controls = useAnimation()
   const ref = React.useRef(null)
   const inView = useInView(ref, {
@@ -77,26 +77,21 @@ const Stories = () => {
         variants={containerVariants}
         className="flex max-w-7xl flex-col items-center justify-center gap-12 sm:gap-16 md:gap-20"
       >
-        {/* First row */}
-        <motion.div variants={itemVariants} className="w-[90%] sm:w-full">
-          <StoryCard {...stories[0]} />
-        </motion.div>
-
-        {/* Second row */}
-        <div className="flex flex-col gap-12 sm:flex-row sm:gap-8 md:gap-12 lg:gap-16">
-          <motion.div variants={itemVariants} className="">
-            <StoryCard {...stories[1]} />
+        {staticData.map((story, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className={`w-[90%] sm:w-full ${
+              index === 1 || index === 2 ? 'sm:w-[calc(50%-0.75rem)]' : ''
+            }`}
+          >
+            <StoryCard {...story} />
           </motion.div>
-          <motion.div variants={itemVariants} className="">
-            <StoryCard {...stories[2]} />
-          </motion.div>
-        </div>
-
-        {/* Third row */}
-        <motion.div variants={itemVariants} className="">
-          <StoryCard {...stories[3]} />
-        </motion.div>
+        ))}
       </motion.div>
+
+      {/* Static Load More button */}
+      <LoadMoreButton  />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  darkMode: 'class',
+  darkMode: 'class', // Enable dark mode
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,24 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // background: 'var(--background)',
-        // foreground: 'var(--foreground)',
-        // 'white-10': 'rgba(255, 255, 255, 0.1)',
-        // 'black-80': 'rgba(21, 21, 21, 0.8)',
-        // navBackground: '#ffffff',
-        // border: '#e5e5e5',
-        // text: '#333333',
-
-        ///
-        lightBackground: '#ffffff',
-        lightForeground: '#000000',
-        darkBackground: '#151515',
-        darkForeground: '#ededed',
-        primary: '#f43333'
+        lightBackground: 'var(--lightBackground)',
+        lightForeground: 'var(--lightForeground)',
+        darkBackground: 'var(--darkBackground)',
+        darkForeground: 'var(--darkForeground)',
+        primary: '#f43333' // Using a static color for the primary
       },
       fontFamily: {
         signeton: ['Signeton', 'sans-serif'],
-        Magnita: ['Magnita', 'serif']
+        magnita: ['Magnita', 'serif']
       },
       transformOrigin: {
         'center-top': 'center top'
@@ -39,4 +30,5 @@ const config: Config = {
   },
   plugins: []
 }
+
 export default config

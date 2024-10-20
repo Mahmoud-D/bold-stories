@@ -1,5 +1,6 @@
-import React from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
+
 import StoryCard from './StoryCard'
 import LoadMoreButton from './LoadMoreButton'
 
@@ -42,13 +43,12 @@ const Stories = () => {
     }
   ]
 
+  const [stories] = useState<Story[]>(staticData)
   const controls = useAnimation()
-  const ref = React.useRef(null)
-  const inView = useInView(ref, {
-    once: true
-  })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start('visible')
     }
@@ -75,23 +75,33 @@ const Stories = () => {
         initial="hidden"
         animate={controls}
         variants={containerVariants}
-        className="flex max-w-7xl flex-col items-center justify-center gap-12 sm:gap-16 md:gap-20"
+        className="flex flex-col items-center justify-center gap-12 mx-4 max-w-7xl sm:gap-16 md:gap-20"
       >
-        {staticData.map((story, index) => (
-          <motion.div
-            key={index}
-            variants={itemVariants}
-            className={`w-[90%] sm:w-full ${
-              index === 1 || index === 2 ? 'sm:w-[calc(50%-0.75rem)]' : ''
-            }`}
-          >
-            <StoryCard {...story} />
+        {/* First row */}
+        <motion.div variants={itemVariants} className="sm:w-full">
+          <StoryCard {...stories[0]} />
+        </motion.div>
+
+        {/* Second and Third cards aligned like second card */}
+        <div className="flex flex-col gap-12 mx-4 sm:flex-row sm:gap-8 md:gap-12 lg:gap-16">
+          <motion.div variants={itemVariants}>
+            <StoryCard {...stories[1]} />
           </motion.div>
-        ))}
+          <motion.div variants={itemVariants}>
+            <StoryCard {...stories[2]} />
+          </motion.div>
+        </div>
+
+        {/* Last card aligned like the second card */}
+        <div className="flex flex-col gap-12 mx-4 sm:flex-row sm:gap-8 md:gap-12 lg:gap-16">
+          <motion.div variants={itemVariants} className="sm:flex-1">
+            <StoryCard {...stories[3]} />
+          </motion.div>
+        </div>
       </motion.div>
 
-      {/* Static Load More button */}
-      <LoadMoreButton  />
+      {/* Load More Button - Rendered Below Stories */}
+      <LoadMoreButton />
     </div>
   )
 }

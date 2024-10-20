@@ -25,7 +25,7 @@ const StoryCard = ({ name, imgLink, date, link }: StoryCardProps) => {
       <a href={link} target="_blank" rel="noreferrer" className="block">
         {/* Image Wrapper */}
         <motion.div
-          className="relative -mr-4 overflow-hidden pl-4 pt-8 sm:-mr-6 sm:pl-6 md:-mr-8 md:pl-8 lg:-mr-10 lg:pl-10"
+          className="relative pt-8 pl-4 -mr-4 overflow-hidden sm:-mr-6 sm:pl-6 md:-mr-8 md:pl-8 lg:-mr-10 lg:pl-10"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.5 }}
@@ -35,7 +35,7 @@ const StoryCard = ({ name, imgLink, date, link }: StoryCardProps) => {
             <motion.img
               src={imgLink}
               alt=""
-              className="h-auto w-full object-cover transition-transform duration-700 ease-in-out"
+              className="object-cover w-full h-auto transition-transform duration-700 ease-in-out"
               style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}
             />
           </div>
@@ -55,9 +55,9 @@ const StoryCard = ({ name, imgLink, date, link }: StoryCardProps) => {
             {name}
           </motion.h3>
           <p className="text-xs text-gray-400 sm:text-sm">{date}</p>
-          <div className="mt-3 flex items-center justify-end text-right sm:mt-4">
+          <div className="flex items-center justify-end mt-3 text-right sm:mt-4">
             <motion.span
-              className="mr-2 text-xs font-semibold sm:text-sm"
+              className="mr-2 text-xs font-semibold hover:text-primary sm:text-sm"
               whileHover={{ x: 8 }}
               transition={{ duration: 0.3 }}
             >

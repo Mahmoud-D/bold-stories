@@ -1,38 +1,57 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const ArrowIcon: React.FC = () => {
-  const arrowVariants = {
+const ArrowIcon = () => {
+  // Main Arrow: Pushes the first small arrow
+  const mainArrowVariants = {
     animate: {
-      x: [0, 6, 0],
+      x: [0, 10, 0], // Move forward and reset
       transition: {
-        duration: 1,
-        repeat: Infinity,
-        ease: 'linear'
+        duration: 1.5,
+        ease: 'easeInOut',
+        repeat: Infinity
       }
     }
   }
 
-  const opacityVariants = {
+  // First Small Arrow: Moved by the main arrow
+  const firstSmallArrowVariants = {
     animate: {
-      opacity: [0.5, 1, 0.5],
+      x: [0, 8, 0], // Moves slightly later than the main arrow
+      opacity: [0.3, 1, 0.3], // Fade in when moving, fade out when idle
       transition: {
-        duration: 1,
-        repeat: Infinity,
-        ease: 'linear'
+        duration: 1.5,
+        ease: 'easeInOut',
+        delay: 0.2, // Starts after the main arrow
+        repeat: Infinity
+      }
+    }
+  }
+
+  // Second Small Arrow: Moved by the first small arrow
+  const secondSmallArrowVariants = {
+    animate: {
+      x: [0, 6, 0], // Moves slightly later than the first small arrow
+      opacity: [0.3, 1, 0.3], // Same fading effect
+      transition: {
+        duration: 1.5,
+        ease: 'easeInOut',
+        delay: 0.4, // Starts after the first small arrow
+        repeat: Infinity
       }
     }
   }
 
   return (
     <motion.em className="flex items-center justify-center">
+      {/* Main Arrow */}
       <motion.svg
         width="25"
         height="25"
         viewBox="0 0 25 25"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        variants={arrowVariants}
+        variants={mainArrowVariants}
         animate="animate"
       >
         <path
@@ -43,26 +62,44 @@ const ArrowIcon: React.FC = () => {
           strokeLinejoin="round"
         />
       </motion.svg>
-      {[1, 2].map((_, index) => (
-        <motion.svg
-          key={index}
-          width="10"
-          height="17"
-          viewBox="0 0 10 17"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          variants={opacityVariants}
-          animate="animate"
-        >
-          <path
-            d="M1.08594 1.46875L8.11719 8.5L1.08594 15.5312"
-            stroke="#F43333"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </motion.svg>
-      ))}
+
+      {/* First Small Arrow */}
+      <motion.svg
+        width="10"
+        height="17"
+        viewBox="0 0 10 17"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        variants={firstSmallArrowVariants}
+        animate="animate"
+      >
+        <path
+          d="M1.08594 1.46875L8.11719 8.5L1.08594 15.5312"
+          stroke="#F43333"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </motion.svg>
+
+      {/* Second Small Arrow */}
+      <motion.svg
+        width="10"
+        height="17"
+        viewBox="0 0 10 17"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        variants={secondSmallArrowVariants}
+        animate="animate"
+      >
+        <path
+          d="M1.08594 1.46875L8.11719 8.5L1.08594 15.5312"
+          stroke="#F43333"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </motion.svg>
     </motion.em>
   )
 }

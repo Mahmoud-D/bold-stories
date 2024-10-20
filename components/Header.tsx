@@ -75,13 +75,13 @@ const Header = () => {
   }
 
   return (
-    <header className="dark:bb bb fixed z-30 h-[60px] w-full backdrop-blur-[10px]">
-      <div className="flex items-center justify-between w-full h-full bl max-w-7xl">
+    <header className="dark:dark-bb light-bb fixed z-30 h-[60px] w-full backdrop-blur-[10px]">
+      <div className="flex items-center justify-between w-full h-full light-bl bl dark:dark-bl max-w-7xl">
         {/* Logo Section */}
         <div
           className={` ${theme === 'dark' ? 'text-white' : 'text-black'} flex items-center gap-2`}
         >
-          <a href="/" className="br p-[22px]">
+          <a href="/" className="light-br br dark:dark:br p-[22px]">
             <svg
               width="20"
               height="16"
@@ -128,7 +128,7 @@ const Header = () => {
               variants={descitemVariants}
               className="p-4 br bl"
             >
-              <a href="#" className="text-lg font-medium">
+              <a href="#" className="text-sm font-medium uppercase">
                 {item}
               </a>
             </motion.li>
@@ -158,9 +158,9 @@ const Header = () => {
           <motion.li
             key={item}
             variants={itemVariants}
-            className="w-full text-center border-b border-white/10 py-7"
+            className="w-full text-center uppercase bb py-7"
           >
-            <a href="#" className="block text-3xl font-semibold">
+            <a href="#" className="block text-5xl font-magnita">
               {item}
             </a>
           </motion.li>

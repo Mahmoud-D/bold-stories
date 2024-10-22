@@ -96,12 +96,8 @@ const Header = () => {
           variants={desktopMenuVariants}
           className="items-center hidden sm:flex"
         >
-          {['Work', 'About', 'Stories', 'Contact'].map((item) => (
-            <motion.li
-              key={item}
-              variants={descitemVariants}
-              className="p-4 br bl"
-            >
+          {navLinks.map((item) => (
+            <motion.li key={item} variants={itemVariants} className="br bl p-4">
               <a href="#" className="text-sm font-medium uppercase">
                 {item}
               </a>
@@ -128,7 +124,7 @@ const Header = () => {
         variants={menuVariants}
         className="dark:bg-darkBackground fixed right-0 top-[70px] h-[calc(100vh-70px)] w-full bg-white sm:hidden"
       >
-        {['Work', 'About', 'Stories', 'Contact'].map((item) => (
+        {navLinks.map((item) => (
           <motion.li
             key={item}
             variants={itemVariants}

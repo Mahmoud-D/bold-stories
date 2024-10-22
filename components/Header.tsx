@@ -63,6 +63,17 @@ const descitemVariants = {
   closed: { opacity: 0, y: -20 }
 }
 
+const themeSunIconVariants = {
+  initial: { opacity: 0, y: -10 }, // Start slightly below
+  animate: { opacity: 1, y: 0, transition: { stiffness: 400, duration: 0.05 } }, // Fade in
+  exit: { opacity: 0, y: 10, transition: { stiffness: 400, duration: 0.05 } } // Fade out and move up
+}
+const themeMoonIconVariants = {
+  initial: { opacity: 0, y: 10 }, // Start slightly below
+  animate: { opacity: 1, y: 0, transition: { stiffness: 400, duration: 0.05 } }, // Fade in
+  exit: { opacity: 0, y: -10, transition: { stiffness: 400, duration: 0.05 } } // Fade out and move up
+}
+
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false)
   const drawerRef = useRef<HTMLUListElement>(null)
@@ -104,9 +115,20 @@ const Header = () => {
             </motion.li>
           ))}
           <motion.li variants={itemVariants} className="p-6">
-            <button onClick={toggleTheme} aria-label="Toggle theme">
+            {/* Theme Toggle with Fade-Out-Up Animation */}
+            <motion.button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              key={theme} // Re-render and trigger animation on theme change
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={
+                theme === 'dark' ? themeSunIconVariants : themeMoonIconVariants
+              }
+            >
               {theme === 'dark' ? <BsSun /> : <BsMoon />}
-            </button>
+            </motion.button>
           </motion.li>
         </motion.ul>
 
@@ -140,9 +162,19 @@ const Header = () => {
           variants={itemVariants}
           className="flex items-center justify-center w-full py-6 text-center cursor-pointer"
         >
-          <button onClick={toggleTheme} aria-label="Toggle theme">
+          <motion.button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            key={theme}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={
+              theme === 'dark' ? themeSunIconVariants : themeMoonIconVariants
+            }
+          >
             {theme === 'dark' ? <BsSun /> : <BsMoon />}
-          </button>
+          </motion.button>
         </motion.li>
       </motion.ul>
     </header>

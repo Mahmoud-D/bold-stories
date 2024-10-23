@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
-import ToggleThemeButton from './toggleThemeButton'
+import ToggleThemeButton from './ToggleThemeButton'
 
 import {
   desktopItemVariants,
   desktopMenuVariants
 } from '@/animations/header-variants'
 import { navLinks } from '@/data'
-
 
 const DesktopNav = () => {
   return (

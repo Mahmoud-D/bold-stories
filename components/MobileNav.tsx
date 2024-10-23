@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import ToggleThemeButton from './toggleThemeButton'
+import ToggleThemeButton from './ToggleThemeButton'
 
 import { itemVariants, menuVariants } from '@/animations/header-variants'
 import { navLinks } from '@/data'

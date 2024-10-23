@@ -1,3 +1,5 @@
+import Icon from './Icon'
+
 const Footer = () => {
   return (
     <footer className="bt bb flex w-full flex-col justify-between sm:flex-row sm:px-3">
@@ -8,17 +10,7 @@ const Footer = () => {
       </div>
 
       <div className="order-1 flex flex-grow items-center justify-center py-3 sm:order-none sm:py-0">
-        <svg
-          width="20"
-          height="16"
-          viewBox="0 0 20 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M10 0L15 7.999H5L10 0Z" fill="#F43333"></path>
-          <path d="M5 7.99902L10 15.998H0L5 7.99902Z" fill="#F43333"></path>
-          <path d="M15 7.99902L20 15.998H10L15 7.99902Z" fill="#F43333"></path>
-        </svg>
+        <Icon />
       </div>
 
       <ul className="bt order-3 flex justify-around gap-2">

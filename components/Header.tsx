@@ -4,8 +4,8 @@ import { useState, useRef } from 'react'
 import DesktopNav from './DesktopNav'
 import MobileNav from './MobileNav'
 import AnimatedHamburgerButton from './AnimatedHamburgerButton'
-import Icon from './Icon'
-import Logo from './Logo'
+import Icon from './UI/Icon'
+import Logo from './UI/Logo'
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false)

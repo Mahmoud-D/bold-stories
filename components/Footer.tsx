@@ -1,4 +1,4 @@
-import Icon from './Icon'
+import Icon from './UI/Icon'
 
 const Footer = () => {
   return (
